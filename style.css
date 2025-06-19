@@ -1,0 +1,611 @@
+@import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Hand+Pre:wght@400..700&family=Playwrite+IN:wght@100..400&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+
+/* Reset and base */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0; 
+    font-family: "Playwrite IN", cursive;
+    background-color: #000000;
+    color: #f0f0f5;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+  a {
+    color: #a5b4fc;
+    text-decoration: none;
+    transition: color 0.4s ease;
+  }
+  a:hover,
+  a:focus {
+    color: #fcd34d;
+    outline: none;
+  }
+
+  /* Container for entire content */
+  .container {
+    max-width: 900px;
+    margin: 40px auto 80px;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 16px;
+    user-select: none;
+  }
+  header h1 {
+    font-weight: 800;
+    font-size: clamp(2.8rem, 5vw, 4rem);
+    background: linear-gradient(135deg, #ff7597, #ff1fc7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+    filter: drop-shadow(0 0 8px #ff407aaa);
+    transition: filter 0.5s ease;
+  }
+  header p {
+    font-weight: 500;
+    font-size: 1.15rem;
+    color: #f497bccc;
+    transition: color 0.5s ease;
+  }
+  header:hover h1 {
+    filter: drop-shadow(0 0 14px #ff1f94cc);
+  }
+  header:hover p {
+    color: #ff5f97cc;
+  }
+
+  /* Glassmorphism card style */
+  section {
+    background: rgba(255 255 255 / 0.07);
+    border-radius: 16px;
+    box-shadow: 0 12px 30px 0 rgba(255, 31, 135, 0.3);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255 31, 135 / 0.2);
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  section:hover,
+  section:focus-within {
+    transform: scale(1.02);
+    box-shadow: 0 20px 40px 0 rgba(255, 31, 135, 0.6);
+    outline: none;
+  }
+
+  /* Countdown section */
+  #countdown h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    text-align: center;
+    letter-spacing: 0.06em;
+    color: #ff5a8c;
+    text-shadow:
+        0 0 6px #ff739c88,
+        0 0 12px #ff346bc8;
+  }
+  .countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+  .time-box {
+    background: rgba(255 173 197 / 0.15);
+    border-radius: 14px;
+    padding: 20px 30px;
+    min-width: 90px;
+    text-align: center;
+    cursor: default;
+    user-select: none;
+    box-shadow:
+      0 0 15px #ff6a9ddd,
+      inset 0 0 25px #ff458fc1;
+    transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.35s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  /* Animate number changes with fade */
+  .number {
+    font-size: 3.2rem;
+    font-weight: 900;
+    color: #ffd0dd;
+    line-height: 1;
+    transition: color 0.8s ease;
+    will-change: color;
+    text-shadow: 0 0 12px #ff5599bb;
+  }
+  /* fade animation on time update */
+  .number.fade {
+    animation: fadeNumber 0.8s ease forwards;
+  }
+  @keyframes fadeNumber {
+    0% {
+      color: #ffb7cc;
+      text-shadow: 0 0 18px #ff2f74;
+    }
+    50% {
+      color: #ffd6e0;
+      text-shadow: 0 0 28px #ff4f94;
+    }
+    100% {
+      color: #ffd0dd;
+      text-shadow: 0 0 12px #ff5599bb;
+    }
+  }
+
+  .time-box:hover,
+  .time-box:focus-within {
+    transform: scale(1.12);
+    box-shadow:
+      0 0 28px #ff4da1cc,
+      inset 0 0 38px #ff247abc;
+    outline: none;
+  }
+  .label {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-top: 6px;
+    color: #ffbad6cc;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    user-select: none;
+  }
+
+  /* Carousel section */
+  #photos h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: #ff5a89;
+    text-align: center;
+    text-shadow: 1px 1px 5px #ff336dbb;
+  }
+  .carousel {
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+    box-shadow:
+      0 0 30px #ff198538 inset,
+      0 10px 32px -2px #ff1f85aa;
+    background: linear-gradient(180deg, #ff4a87aa 0%, #ff2277bb 100%);
+  }
+  .carousel-track {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .carousel-item {
+    flex: 0 0 100%;
+    user-select: none;
+    position: relative;
+    opacity: 0.8;
+    transform: scale(0.97);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  }
+  .carousel-item[aria-hidden="false"] {
+    opacity: 1;
+    transform: scale(1);
+  }
+  .carousel-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 18px;
+    aspect-ratio: 4 / 3;
+    box-shadow:
+      0 0 24px 0 #ff3a87cc,
+      0 0 16px 8px #ff4d99aa inset;
+    filter: drop-shadow(0 0 20px #ff5b9ecc);
+    user-select: none;
+  }
+  /* Controls for carousel */
+  .carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255 20 120 / 0.6);
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    color: #ffd1db;
+    box-shadow:
+      0 0 14px #ff599bcc;
+    transition:
+      background-color 0.4s ease,
+      box-shadow 0.4s ease,
+      transform 0.25s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+  }
+  .carousel-button:focus {
+    outline: 3px solid #ff2a88;
+    outline-offset: 3px;
+    background-color: rgba(255 20 120 / 0.8);
+    box-shadow: 0 0 28px #ff2266cc;
+  }
+  .carousel-button:hover {
+    background-color: rgba(255 20 120 / 0.9);
+    transform: scale(1.1);
+    box-shadow: 0 0 28px #ff5599ff;
+  }
+  .prev-button {
+    left: 14px;
+  }
+  .next-button {
+    right: 14px;
+  }
+
+  /* Calendar section */
+  #calendar h2 {
+    font-weight: 700;
+    font-size: 2rem;
+    color: #ff6487;
+    margin-bottom: 24px;
+    text-align: center;
+    text-shadow: 2px 1px 5px #ff2a55aa;
+  }
+  .calendar-container {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #ff7399cc;
+    font-weight: 700;
+    font-size: 1.15rem;
+    user-select: none;
+  }
+  .calendar-header button {
+    background: transparent;
+    border: none;
+    color: #ff7399cc;
+    font-size: 36px;
+    cursor: pointer;
+    padding: 8px 14px;
+    border-radius: 14px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    user-select: none;
+  }
+  .calendar-header button:hover,
+  .calendar-header button:focus {
+    background-color: #ff3f6dbb;
+    outline: none;
+    transform: scale(1.2);
+    box-shadow: 0 0 16px #ff3f6dbb;
+  }
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 12px;
+  }
+  .day-name {
+    font-weight: 700;
+    color: #ff6c88ff;
+    text-align: center;
+    font-size: 1rem;
+    user-select: none;
+  }
+  .calendar-day {
+    aspect-ratio: 1 / 1;
+    border-radius: 16px;
+    background: rgba(255 0 115 / 0.12);
+    position: relative;
+    cursor: pointer;
+    box-shadow: inset 0 0 10px #ff2a50cc;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 8px 12px 6px 8px;
+    font-weight: 700;
+    color: #ffa5b8cc;
+    user-select: none;
+  }
+  .calendar-day:hover,
+  .calendar-day:focus {
+    background: #ff517ecc;
+    outline: none;
+    transform: scale(1.12);
+    color: #ffffffee;
+    box-shadow:
+      0 0 20px 4px #ff3c6ccc,
+      inset 0 0 32px #ff8aa9bb;
+    z-index: 20;
+  }
+  .calendar-day.has-event {
+    background: #ffacd5cc;
+    color: #66003a;
+    box-shadow: 0 0 14px #ff77caa9;
+  }
+  .calendar-day.today {
+    border: 3px solid #ff81a6cc;
+  }
+  /* Heart background on the 17th day */
+  .calendar-day.marked-17 {
+    position: relative;
+    color: #ffdeed;
+    font-weight: 900;
+    text-shadow: 0 0 6px #ff7bb5;
+    box-shadow: 0 0 22px 4px #ff469bbf inset;
+    cursor: default;
+    user-select: none;
+    animation: heartbeat 1.8s infinite ease-in-out;
+    transition: box-shadow 0.5s ease;
+  }
+  .calendar-day.marked-17::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 70%;
+    height: 70%;
+    background:
+      radial-gradient(circle at 30% 30%, #ff3a6a 60%, transparent 70%),
+      radial-gradient(circle at 70% 30%, #ff3a6a 60%, transparent 70%),
+      linear-gradient(45deg, transparent 25%, #ff3a6a 25%, #ff3a6a 75%, transparent 75%),
+      linear-gradient(-45deg, transparent 25%, #ff3a6a 25%, #ff3a6a 75%, transparent 75%);
+    background-repeat: no-repeat;
+    background-position: 0 0, 100% 0, 0 100%, 100% 100%;
+    background-size: 50% 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    border-radius: 25% 25% 50% 50%;
+    z-index: -1;
+    filter: drop-shadow(0 0 6px #ff2a60);
+    animation: glowingHeart 2.8s infinite ease-in-out;
+  }
+  /* heart beat animation for day 17 */
+  @keyframes heartbeat {
+    0%, 100% {
+      box-shadow: 0 0 22px 4px #ff469bbf inset;
+      transform: scale(1);
+    }
+    50% {
+      box-shadow: 0 0 40px 6px #ff3c84ff inset;
+      transform: scale(1.1);
+    }
+  }
+  @keyframes glowingHeart {
+    0%, 100% {
+      filter: drop-shadow(0 0 6px #ff2a60);
+    }
+    50% {
+      filter: drop-shadow(0 0 18px #ff3a74) drop-shadow(0 0 12px #ff3a74);
+    }
+  }
+  .event-dot {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 8px;
+    background: #ff69a9;
+    border-radius: 50%;
+    box-shadow: 0 0 12px #ff597faa;
+    animation: pulseDot 2.5s infinite ease-in-out;
+  }
+  @keyframes pulseDot {
+    0%, 100% {
+      box-shadow: 0 0 10px #ff597fbb;
+      transform: translateX(-50%) scale(1);
+      opacity: 1;
+    }
+    50% {
+      box-shadow: 0 0 20px #ff347aee;
+      transform: translateX(-50%) scale(1.3);
+      opacity: 0.8;
+    }
+  }
+  
+  /* Add special date form */
+  .special-date-form {
+    margin-top: 16px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .special-date-form input[type="date"],
+  .special-date-form input[type="text"] {
+    padding: 12px 16px;
+    border-radius: 16px;
+    border: none;
+    flex: 1 0 36%;
+    font-size: 1.1rem;
+    box-shadow: 0 0 12px #ff5a8588 inset;
+    outline-offset: 3px;
+    transition: box-shadow 0.3s ease;
+    color: #2c002c;
+    font-weight: 600;
+  }
+  .special-date-form input[type="date"]:focus,
+  .special-date-form input[type="text"]:focus {
+    outline: none;
+    box-shadow: 0 0 20px #ff69aacc inset;
+    background: #ffdbf3;
+  }
+  .special-date-form button {
+    padding: 12px 30px;
+    border-radius: 18px;
+    border: none;
+    background: linear-gradient(135deg, #ff63a3, #ff2f7a);
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    flex: 0 0 auto;
+    transition: background-color 0.4s ease, box-shadow 0.4s ease, transform 0.2s ease;
+    box-shadow: 0 0 20px #ff4f84cc;
+    user-select: none;
+  }
+  .special-date-form button:hover,
+  .special-date-form button:focus {
+    background: linear-gradient(135deg, #ff86b8, #ff4a91);
+    outline: none;
+    box-shadow: 0 0 28px #ff3186cc;
+    transform: scale(1.1);
+  }
+
+  /* Music section */
+  #music h2 {
+    font-weight: 700;
+    font-size: 2rem;
+    color: #fcb8ce;
+    text-align: center;
+    margin-bottom: 24px;
+    text-shadow: 1px 1px 8px #ff4173cc;
+  }
+  .music-player {
+    background: rgba(255 60 100 / 0.15);
+    border-radius: 20px;
+    padding: 26px;
+    box-shadow: 0 0 40px #ff5588cc inset;
+    transition: box-shadow 0.5s ease;
+  }
+  .music-player:hover,
+  .music-player:focus-within {
+    box-shadow: 0 0 64px 10px #ff4090bb inset;
+  }
+  .music-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-height: 280px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    outline-offset: 4px;
+  }
+  .music-item {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    cursor: pointer;
+    padding: 14px 20px;
+    border-radius: 20px;
+    background: rgba(255 105 150 / 0.14);
+    transition: background-color 0.4s ease, transform 0.3s ease, box-shadow 0.4s ease;
+    user-select: none;
+  }
+  .music-item:hover,
+  .music-item:focus {
+    background: #ff6a8ecc;
+    color: #390021;
+    outline: none;
+    transform: scale(1.07);
+    box-shadow: 0 0 32px #ff519dcc;
+  }
+  .music-item.active {
+    background: #ff456c;
+    color: #2d001c;
+    font-weight: 800;
+    box-shadow: 0 0 40px #ff3e8ebb;
+  }
+  .music-item .material-icons {
+    user-select: none;
+    color: inherit;
+    font-size: 28px;
+    filter: drop-shadow(0 0 4px #ff4a8dbb);
+  }
+
+  audio {
+    width: 100%;
+    outline: none;
+    border-radius: 16px;
+    background: transparent;
+    filter: drop-shadow(0 0 20px #ff72aacd);
+    transition: filter 0.4s ease;
+  }
+  audio:focus {
+    filter: drop-shadow(0 0 30px #ff4a97dd);
+  }
+
+  /* Scrollbar styling for music list */
+  .music-list::-webkit-scrollbar {
+    width: 10px;
+  }
+  .music-list::-webkit-scrollbar-thumb {
+    background: #ff439ecc;
+    border-radius: 14px;
+  }
+  .music-list::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  /* Responsive */
+  @media (max-width: 720px) {
+    .container {
+      margin: 20px auto 50px;
+      gap: 36px;
+      padding: 0 12px;
+    }
+    section {
+      padding: 28px 18px;
+    }
+    .countdown-timer {
+      gap: 20px;
+    }
+    .time-box {
+      min-width: 70px;
+      padding: 15px 20px;
+      font-size: 1rem;
+    }
+    .time-box .number {
+      font-size: 2.5rem;
+    }
+    .carousel-button {
+      width: 40px;
+      height: 40px;
+      font-size: 22px;
+    }
+  }
+  @media (max-width: 400px) {
+    header h1 {
+      font-size: 2.7rem;
+    }
+    .special-date-form {
+      flex-direction: column;
+      gap: 12px;
+    }
+    .special-date-form input[type="date"],
+    .special-date-form input[type="text"] {
+      flex: 1 0 100%;
+      font-size: 1rem;
+    }
+    .special-date-form button {
+      width: 100%;
+      padding: 14px 0;
+      font-size: 1rem;
+      border-radius: 12px;
+    }
+  }
+
+  /* Accessibility helper */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+  }

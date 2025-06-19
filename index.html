@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>Nosso Amor - Contagem e Memórias</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Poppins:wght@600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header role="banner" aria-label="Nosso Amor">
+    <h1 tabindex="0">Bruno + Camila</h1>
+    <p tabindex="0">Nossa jornada desde 17 de julho de 2024</p>
+  </header>
+
+  <main class="container" role="main">
+    <!-- Countdown Section -->
+    <section id="countdown" aria-labelledby="countdown-title" role="region" tabindex="0">
+      <h2 id="countdown-title">Nosso Amor</h2>
+      <div class="countdown-timer" aria-live="polite" aria-atomic="true" role="timer" aria-describedby="countdown-desc">
+        <div class="time-box" tabindex="0" aria-label="Anos">
+          <div class="number" id="years">0</div>
+          <div class="label">Anos</div>
+        </div>
+        <div class="time-box" tabindex="0" aria-label="Meses">
+          <div class="number" id="months">0</div>
+          <div class="label">Meses</div>
+        </div>
+        <div class="time-box" tabindex="0" aria-label="Dias">
+          <div class="number" id="days">0</div>
+          <div class="label">Dias</div>
+        </div>
+        <div class="time-box" tabindex="0" aria-label="Horas">
+          <div class="number" id="hours">0</div>
+          <div class="label">Horas</div>
+        </div>
+        <div class="time-box" tabindex="0" aria-label="Minutos">
+          <div class="number" id="minutes">0</div>
+          <div class="label">Minutos</div>
+        </div>
+        <div class="time-box" tabindex="0" aria-label="Segundos">
+          <div class="number" id="seconds">0</div>
+          <div class="label">Segundos</div>
+        </div>
+      </div>
+      <div id="countdown-desc" class="sr-only">Contagem do tempo de namoro desde 17 de julho de 2024</div>
+    </section>
+
+    <!-- Carousel Section -->
+    <section id="photos" aria-labelledby="photos-title" role="region">
+      <h2 id="photos-title">Fotos Nossas</h2>
+      <div class="carousel" aria-roledescription="carousel" aria-label="Carrossel de fotos">
+        <button class="carousel-button prev-button" aria-label="Foto anterior" title="Foto anterior">
+          <span class="material-icons" aria-hidden="true">arrow_back_ios</span>
+        </button>
+        <div class="carousel-track" tabindex="0">
+          <div class="carousel-item" aria-hidden="false">
+            <img src="foto 1.jpg" alt="Foto romântica nossa sorrindo numa tarde ensolarada" />
+          </div>
+          <div class="carousel-item" aria-hidden="true">
+            <img src="foto 2.jpg" alt="Foto celebrando aniversário juntos com balões e sorrisos" />
+          </div>
+          <div class="carousel-item" aria-hidden="true">
+            <img src="foto 3.jpg" alt="Nós dois em passeio à beira do lago ao entardecer" />
+          </div>
+          <div class="carousel-item" aria-hidden="true">
+            <img src="foto 4.jpg" alt="Nós de mãos dadas caminhando numa floresta com folhas caídas" />
+          </div>
+        </div>
+        <button class="carousel-button next-button" aria-label="Próxima foto" title="Próxima foto">
+          <span class="material-icons" aria-hidden="true">arrow_forward_ios</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Calendar Section -->
+    <section id="calendar" aria-labelledby="calendar-title" role="region" tabindex="0">
+      <h2 id="calendar-title">Calendário de Datas Especiais</h2>
+      <div class="calendar-container">
+        <div class="calendar-header" aria-live="polite" aria-atomic="true">
+          <button type="button" id="prev-month" aria-label="Mês anterior">
+            <span class="material-icons" aria-hidden="true">chevron_left</span>
+          </button>
+          <div id="month-year" aria-live="polite" aria-atomic="true" aria-relevant="text" tabindex="0"></div>
+          <button type="button" id="next-month" aria-label="Próximo mês">
+            <span class="material-icons" aria-hidden="true">chevron_right</span>
+          </button>
+        </div>
+        <div class="calendar-grid" aria-label="Dias da semana">
+          <div class="day-name" aria-hidden="true">Dom</div>
+          <div class="day-name" aria-hidden="true">Seg</div>
+          <div class="day-name" aria-hidden="true">Ter</div>
+          <div class="day-name" aria-hidden="true">Qua</div>
+          <div class="day-name" aria-hidden="true">Qui</div>
+          <div class="day-name" aria-hidden="true">Sex</div>
+          <div class="day-name" aria-hidden="true">Sáb</div>
+        </div>
+        <div class="calendar-grid" id="days-grid" role="grid" aria-label="Dias do mês" tabindex="0">
+          <!-- Days populated dynamically -->
+        </div>
+        <form class="special-date-form" id="special-date-form" aria-label="Adicionar nova data especial">
+          <input type="date" id="special-date-input" aria-label="Data da data especial" required />
+          <input type="text" id="special-desc-input" aria-label="Descrição da data especial" placeholder="Descrição da data especial" required />
+          <button type="submit" aria-label="Adicionar data especial">Adicionar</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Music Section -->
+    <section id="music" aria-labelledby="music-title" role="region" tabindex="0">
+      <h2 id="music-title">Músicas para Nós</h2>
+      <div class="music-player" aria-label="Reprodutor de música">
+        <div class="music-list" role="list" tabindex="0" aria-label="Lista de músicas">
+          <!-- Songs added dynamically -->
+        </div>
+        <audio id="audio-player" controls preload="metadata" aria-describedby="music-desc">
+          Seu navegador não suporta o elemento de áudio.
+        </audio>
+        <div id="music-desc" class="sr-only">Controles para reprodução de música, pausa e volume.</div>
+      </div>
+    </section>
+  </main>
+
+<script src="script.js"></script>
+
+</body>
+</html>
